@@ -1,0 +1,60 @@
+{
+  "tsc-alias": {
+    "resolveFullPaths": true,
+    "verbose": false
+  },
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "incremental": true,
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ESNext"
+    ],
+    "module": "preserve",
+    "skipLibCheck": true,
+    "removeComments": true,
+    "outDir": "dist",
+    "useUnknownInCatchVariables": true,
+    "allowJs": true,
+    "checkJs": false,
+    /* Bundler mode */
+    "moduleResolution": "node",
+    "moduleDetection": "force",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    /* Experimental Options */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    /* Linting */
+    "strict": true,
+    "strictNullChecks": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@db": [
+        "prisma/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "prisma/**/*",
+    "*.config.ts"
+  ],
+  "exclude": [
+    "node_modules/",
+    "build/",
+    "dist/",
+    ".cache/",
+    ".tmp/"
+  ]
+}

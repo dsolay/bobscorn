@@ -1,0 +1,59 @@
+generator client {
+  provider   = "prisma-client"
+  output     = "../src/generated/prisma"
+  engineType = "client"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+generator zod {
+  provider                         = "zod-prisma-types"
+  output                           = "../src/generated/zod"
+  useMultipleFiles                 = true
+  writeBarrelFiles                 = true
+  createModelTypes                 = true
+  addInputTypeValidation           = true
+  addIncludeType                   = true
+  addSelectType                    = true
+  validateWhereUniqueInput         = true
+  createOptionalDefaultValuesTypes = true
+  createRelationValuesTypes        = true
+  createPartialTypes               = true
+  useDefaultValidators             = true
+  coerceDate                       = true
+  writeNullishInModelTypes         = true
+  useTypeAssertions                = true
+  prismaClientPath                 = "../../prisma/client.js"
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  name          String         @map("nombres")
+  lastname      String         @map("apellidos")
+  fullname      String         @map("nombre_completo")
+  email         String         @unique @map("correo")
+  password      String
+  blocked       Boolean        @default(false) @map("bloqueado")
+  enabled       Boolean        @default(true) @map("activo")
+  createdAt     DateTime       @default(now()) @map("creado")
+  updatedAt     DateTime?      @updatedAt @map("actualizado")
+  deletedAt     DateTime?      @map("eliminado")
+  refreshTokens RefreshToken[]
+
+  @@map("usuarios")
+}
+
+model RefreshToken {
+  id        Int       @id @default(autoincrement())
+  token     String    @unique
+  userId    Int       @map("usuario_id")
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  expiresAt DateTime  @map("vencimiento")
+  createdAt DateTime  @default(now()) @map("creado")
+  updatedAt DateTime? @updatedAt @map("actualizado")
+  deletedAt DateTime? @map("eliminado")
+
+  @@map("refresh_tokens")
+}

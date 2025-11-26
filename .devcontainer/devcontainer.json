@@ -1,0 +1,37 @@
+{
+  "name": "hub",
+  "build": {
+    "context": ".",
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": [
+    "--name=hub-api"
+  ],
+  "forwardPorts": [
+    3000
+  ],
+  "remoteUser": "node",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/node/workspace/app/,type=bind,consistency=cached",
+  "workspaceFolder": "/home/node/workspace/app",
+  "mounts": [
+    "source=node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+    "source=extensions,target=/home/node/.vscode-server/extensions,type=volume"
+  ],
+  "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "visualstudioexptteam.vscodeintellicode",
+        "foxundermoon.shell-format",
+        "redhat.vscode-yaml",
+        "mikestead.dotenv",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "stoplight.spectral",
+        "ms-azuretools.vscode-docker",
+        "Prisma.prisma",
+        "SonarSource.sonarlint-vscode"
+      ]
+    }
+  }
+}

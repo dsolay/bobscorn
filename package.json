@@ -1,0 +1,28 @@
+{
+  "name": "bobscorn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "node .husky/install.js",
+    "lint": "pnpm --recursive lint",
+    "lint:api": "pnpm --filter api lint",
+    "lint:web": "pnpm --filter web lint",
+    "lint:fix": "pnpm --recursive lint:fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@commitlint/types": "^20.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
+    "semantic-release": "^25.0.2",
+    "semantic-release-export-data": "^1.2.0"
+  },
+  "packageManager": "pnpm@10.23.0"
+}
