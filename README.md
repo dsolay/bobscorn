@@ -22,6 +22,7 @@ Built with modern web technologies including Nuxt 4, Vue 3, Node.js, and TypeScr
 - [📝 API Documentation](#-api-documentation)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
+- [🏆 Best Practices & Development Standards](#-best-practices--development-standards)
 
 ## 🚀 Quick Start
 
@@ -299,10 +300,11 @@ The development environment will be available at:
 ## 🔒 Security Features
 
 - Rate limiting (1 purchase per minute per client)
-- JWT authentication
+- JWT authentication with bearer tokens and refresh tokens
 - Input validation with Zod
 - CORS protection
 - Helmet security headers
+- Secure token management with automatic refresh
 
 ## 📝 API Documentation
 
@@ -323,3 +325,113 @@ The API follows RESTful principles and includes:
 ## 📄 License
 
 ISC License - see LICENSE file for details.
+
+## 🏆 Best Practices & Development Standards
+
+This project implements comprehensive best practices across code quality,
+development workflow, and architecture patterns to ensure maintainability, security, and developer experience.
+
+### 🔒 Code Quality & Security
+
+#### Error Handling System
+
+- **Structured Error Hierarchy**: Custom error classes extending `BaseError` with consistent error codes
+- **Standardized Error Responses**: Unified error format with HTTP status codes, error codes, and details
+- **Internationalization Support**: Error messages available in multiple languages
+- **Error Classification**: Different error levels (error, warning, info) for better monitoring
+
+**Error Codes Implementation:**
+
+```typescript
+// Standardized error codes for consistent error handling
+export enum APP_ERROR {
+  UNKNOWN_ERROR = 1,
+  INVALID_PAYLOAD = 2,
+  UNAUTHORIZED = 3,
+  MODEL_NOT_FOUND = 4,
+  FORBIDDEN = 5,
+  CORN_RATE_LIMIT = 100,
+}
+```
+
+#### Security Practices
+
+- **Input Validation**: Zod schema validation for all API inputs
+- **Authentication Middleware**: Bearer token and refresh token handling
+- **Rate Limiting**: Built-in rate limiting for corn purchases (1 per minute per client)
+- **Security Headers**: Helmet.js for security headers
+- **Secret Detection**: ESLint plugin to prevent accidental secret exposure
+
+### 🛠️ Development Experience
+
+#### Code Quality Tools
+
+- **ESLint Configuration**: Comprehensive linting with multiple plugins:
+  - TypeScript ESLint for type safety
+  - Unicorn for modern JavaScript practices
+  - Security plugin for vulnerability detection
+  - SonarJS for code quality metrics
+  - No-secrets plugin for security
+- **Pre-commit Hooks**: Husky with lint-staged for automated code quality checks
+- **Auto-formatting**: VS Code settings for automatic formatting on save
+
+#### Type Safety
+
+- **Strict TypeScript**: Full type safety with strict configuration
+- **Type Definitions**: Comprehensive type definitions for API responses, errors, and database models
+- **Type Generation**: Prisma and Zod schema generation for type consistency
+
+### 🏗️ Architecture Patterns
+
+#### Backend Architecture
+
+- **Modular Structure**: Organized by modules, middleware, utilities, and constants
+- **Middleware Pattern**: Centralized error handling, authentication, and request processing
+- **Repository Pattern**: Database access through Prisma with type-safe queries
+- **Service Layer**: Business logic separation from controllers
+
+#### Frontend Architecture
+
+- **Composition API**: Vue 3 Composition API with composables for reusable logic
+- **State Management**: Pinia stores for centralized state management
+- **Component Structure**: Single File Components (SFC) with clear separation of concerns
+- **Internationalization**: Vue I18n for multi-language support
+
+### 🔧 Development Workflow
+
+#### VS Code Dev Containers
+
+- **Consistent Environment**: Pre-configured development environment across all machines
+- **Automated Setup**: Post-create scripts for dependency installation
+- **Extension Bundles**: Pre-installed extensions for Vue, Nuxt, TypeScript, and ESLint
+- **Volume Mounts**: Cached node_modules for faster rebuilds
+
+#### Code Standards
+
+- **Commit Convention**: Conventional commits with commitlint
+- **Pull Request Templates**: Standardized PR templates for consistent reviews
+- **Release Automation**: Semantic release with automated versioning
+- **Documentation**: Comprehensive README with setup instructions
+
+### 📊 Testing & Quality Assurance
+
+#### Quality Gates
+
+- **Pre-commit Hooks**: Automated linting and formatting
+- **CI/CD Pipeline**: GitHub Actions for automated testing and deployment
+- **Code Coverage**: Integration with coverage reporting tools
+- **Security Scanning**: Automated vulnerability detection
+
+#### Multi-language Support
+
+- **Vue I18n Integration**: Full internationalization support
+- **Locale Management**: Organized locale files for easy maintenance
+- **Dynamic Language Switching**: Runtime language selection
+
+### 📈 Monitoring & Observability
+
+#### Logging & Monitoring
+
+- **Structured Logging**: Consistent log format with error levels
+- **Error Tracking**: Centralized error handling with stack traces
+- **Debug Mode**: Development-friendly error details in debug mode
