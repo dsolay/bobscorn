@@ -1,0 +1,25 @@
+services:
+  api:
+    restart: always
+    image: bobscorn/api
+    container_name: bobscorn-api
+    environment:
+      - JWT_ACCESS_SECRET=${JWT_ACCESS_SECRET:-GhLD3fbda7DN1uEbRVwPflshIkBtBCJ8hpPX37zN}
+      - ORIGINS=${ORIGINS:-http://localhost}
+    build:
+      context: ./apps/api/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  web:
+    restart: always
+    image: bobscorn/ui
+    container_name: bobscorn-ui
+    build:
+      context: ./apps/web/
+      dockerfile: Dockerfile
+      args:
+        - NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE:-http://localhost:8080}
+    ports:
+      - "80:80"
