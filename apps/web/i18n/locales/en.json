@@ -39,5 +39,36 @@
   },
   "logout": {
     "btn": "Logout"
+  },
+  "register": {
+    "title": "Join Bob's Corn",
+    "subtitle": "Create your account today",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "John",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Doe",
+    "email": "Email Address",
+    "emailPlaceholder": "your{'@'}email.com",
+    "password": "Password",
+    "passwordPlaceholder": "••••••••",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "••••••••",
+    "submit": "Create Account",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Sign in here"
+  },
+  "validations": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "minLength": "This field must be at least {min} character | This field must be at least {min} characters",
+    "password": {
+      "minLength": "Password must be at least {min} characters",
+      "uppercase": "Password must contain at least one uppercase letter",
+      "lowercase": "Password must contain at least one lowercase letter",
+      "number": "Password must contain at least one number",
+      "special": "Password must contain at least one special character",
+      "match": "Passwords must match"
+    },
+    "confirmPassword": "Password confirmation does not match"
   }
 }

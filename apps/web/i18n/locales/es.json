@@ -39,5 +39,37 @@
   },
   "logout": {
     "btn": "Cerrar Sesión"
+  },
+  "register": {
+    "title": "Únete a Bob's Corn",
+    "subtitle": "Crea tu cuenta hoy",
+    "firstName": "Nombre",
+    "firstNamePlaceholder": "Juan",
+    "lastName": "Apellido",
+    "lastNamePlaceholder": "Pérez",
+    "email": "Correo Electrónico",
+    "emailPlaceholder": "tu{'@'}email.com",
+    "password": "Contraseña",
+    "passwordPlaceholder": "••••••••",
+    "confirmPassword": "Confirmar Contraseña",
+    "confirmPasswordPlaceholder": "••••••••",
+    "submit": "Crear Cuenta",
+    "haveAccount": "¿Ya tienes una cuenta?",
+    "loginLink": "Inicia sesión aquí"
+  },
+  "validations": {
+    "required": "Este campo es obligatorio",
+    "email": "Por favor ingresa un correo electrónico válido",
+    "emailInvalid": "Formato de correo electrónico inválido",
+    "minLength": "Este campo debe tener al menos {min} carácter | Este campo debe tener al menos {min} caracteres",
+    "password": {
+      "minLength": "La contraseña debe tener al menos {min} caracteres",
+      "uppercase": "La contraseña debe contener al menos una letra mayúscula",
+      "lowercase": "La contraseña debe contener al menos una letra minúscula",
+      "number": "La contraseña debe contener al menos un número",
+      "special": "La contraseña debe contener al menos un carácter especial",
+      "match": "Las contraseñas deben coincidir"
+    },
+    "confirmPassword": "La confirmación de contraseña no coincide"
   }
 }

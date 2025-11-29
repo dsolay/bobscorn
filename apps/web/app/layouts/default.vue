@@ -7,7 +7,7 @@
   >
     <header class="mb-8 flex flex-col gap-6 items-center justify-center sm:flex-row">
       <div
-        class="text-2xl text-white rounded-full bg-yellow-500 flex shrink-0 h-16 w-16 shadow-lg items-center justify-center"
+        class="text-2xl text-white rounded-full bg-yellow-400 flex shrink-0 h-16 w-16 shadow-lg items-center justify-center"
       >
         <div class="i-twemoji-ear-of-corn" />
       </div>

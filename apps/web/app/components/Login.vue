@@ -3,7 +3,8 @@ import { z } from 'zod'
 
 const { login } = useAuthApi()
 
-const isOpen = ref(false)
+const isOpen = defineModel({ default: false })
+const isSignUpModalOpen = ref(false)
 const loading = ref(false)
 
 const form = reactive({
@@ -24,6 +25,16 @@ const schema = z.object({
 function closeModal() {
   isOpen.value = false
   resetForm()
+}
+
+function openSignUp() {
+  isSignUpModalOpen.value = true
+  isOpen.value = false
+}
+
+function openSignIn() {
+  isOpen.value = true
+  isSignUpModalOpen.value = false
 }
 
 function resetForm() {
@@ -77,12 +88,7 @@ async function handleLogin() {
 </script>
 
 <template>
-  <button
-    class="text-white font-semibold px-4 py-2 rounded bg-yellow-500 flex gap-x-2 cursor-pointer shadow items-center justify-center focus:outline-none hover:bg-yellow-600 disabled:opacity-60 focus:ring-3 focus:ring-amber-300"
-    @click="isOpen = true"
-  >
-    {{ $t("login.btn") }}
-  </button>
+  <SignUp v-model="isSignUpModalOpen" @sign-in="openSignIn" />
 
   <div
     v-if="isOpen"
@@ -90,22 +96,23 @@ async function handleLogin() {
     @click="closeModal"
   >
     <div
-      class="rounded-2xl bg-white max-w-md w-full shadow-2xl transform transition-all"
+      class="rounded-2xl bg-white max-w-md w-full shadow-2xl transform transition-all overflow-hidden"
       @click.stop
     >
-      <div class="p-6 border-b border-gray-200">
+      <div class="text-white p-6 from-yellow-400 to-yellow-500 bg-gradient-to-r">
         <div class="flex items-center justify-between">
-          <h3 class="text-xl text-gray-900 font-bold">
+          <h3 class="text-xl font-bold">
             {{ $t("login.title") }}
           </h3>
+
           <button
-            class="text-gray-400 cursor-pointer transition-colors hover:text-gray-600"
+            class="text-yellow-100 cursor-pointer transition-colors hover:text-white"
             @click="closeModal"
           >
             <div class="i-mdi-close" />
           </button>
         </div>
-        <p class="text-sm text-gray-600 mt-1">
+        <p class="text-sm text-yellow-100 mt-1">
           {{ $t("login.subtitle") }}
         </p>
       </div>
@@ -174,6 +181,7 @@ async function handleLogin() {
             <a
               href="#"
               class="text-yellow-600 font-medium transition-colors hover:text-yellow-700"
+              @click="openSignUp"
             >
               {{ $t("login.signup") }}
             </a>

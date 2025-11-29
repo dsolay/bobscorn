@@ -94,9 +94,9 @@ onBeforeMount(() => {
         {{ $t("portal.title") }}
       </h3>
 
-      <Login v-if="!store.user" />
+      <LoginButton v-if="!store.user" />
 
-      <Logout v-else />
+      <LogoutButton v-else />
     </div>
 
     <button

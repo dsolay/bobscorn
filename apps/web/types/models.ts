@@ -27,3 +27,11 @@ export interface CornHistoryDto {
   total: number
   date: string
 }
+
+export interface RegisterUser {
+  name: string
+  lastname: string
+  email: string
+  password: string
+  confirmPassword: string
+}
