@@ -3,6 +3,26 @@
 A full-stack web application for managing corn purchases with rate limiting capabilities.
 Built with modern web technologies including Nuxt 4, Vue 3, Node.js, and TypeScript.
 
+## 📋 Table of Contents
+
+- [🚀 Quick Start](#-quick-start)
+  - [Development Prerequisites](#development-prerequisites)
+  - [Development Setup](#development-setup)
+  - [Docker Setup](#docker-setup)
+- [📁 Project Structure](#-project-structure)
+- [🛠️ Development Commands](#️-development-commands)
+- [🔧 Configuration](#-configuration)
+  - [Environment Variables](#environment-variables)
+  - [Database](#database)
+- [🧪 Testing](#-testing)
+- [🌐 Internationalization](#-internationalization)
+- [🐳 Docker Details](#-docker-details)
+- [🖥️ VS Code Dev Containers](#️-vs-code-dev-containers)
+- [🔒 Security Features](#-security-features)
+- [📝 API Documentation](#-api-documentation)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+
 ## 🚀 Quick Start
 
 ### Development Prerequisites
