@@ -5,7 +5,7 @@ Built with modern web technologies including Nuxt 4, Vue 3, Node.js, and TypeScr
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Development Prerequisites
 
 - **Node.js** 24.11.1 or higher
 - **pnpm** 10.23.0 or higher
@@ -74,14 +74,14 @@ Built with modern web technologies including Nuxt 4, Vue 3, Node.js, and TypeScr
 
 #### Individual Docker Services
 
-**API Service Only**
+##### API Service Only
 
 ```bash
 cd apps/api
 docker-compose up --build
 ```
 
-**Web Service Only**
+##### Web Service Only
 
 ```bash
 cd apps/web
@@ -146,9 +146,11 @@ pnpm typecheck             # TypeScript type checking
 
 ### Environment Variables
 
-**API (.env)**
+#### API Environment Variables
 
 ```env
+# Copy this file to .env and update the values as needed
+
 DATABASE_URL=file:./dev.db
 APP_DEBUG=true
 PORT=3000
@@ -156,8 +158,16 @@ JWT_ACCESS_SECRET=your-secret-key
 ORIGINS=http://localhost
 ```
 
-**Web**
-Environment variables for the web app are configured in `nuxt.config.ts` and can be overridden via Docker build args.
+#### Web Environment Variables
+
+```env
+# Copy this file to .env and update the values as needed
+
+# API Configuration
+NUXT_PUBLIC_API_BASE=http://localhost:8080
+```
+
+Environment variables for the web app can also be configured in `nuxt.config.ts` and overridden via Docker build args.
 
 ### Database
 
@@ -218,6 +228,53 @@ You can customize the Docker setup by modifying:
 
 - `docker-compose.yaml` for service configuration
 - Individual `Dockerfile` in each app directory for build customization
+
+## 🖥️ VS Code Dev Containers
+
+The project includes full support for VS Code Dev Containers, providing a
+consistent development environment across different machines.
+
+### Dev Containers Prerequisites
+
+- **VS Code** with the **Dev Containers** extension installed
+- **Docker** running on your system
+
+### Getting Started
+
+1. **Open the project in VS Code**
+
+2. **Reopen in Container**
+   - When prompted by VS Code, click "Reopen in Container"
+   - Or use the command palette (Ctrl+Shift+P) and run "Dev Containers: Reopen in Container"
+
+3. **Wait for setup**
+   - The container will build automatically (first time only)
+   - Dependencies will be installed via the post-create script
+   - VS Code extensions will be installed
+
+### Features
+
+- **Pre-configured environment**: Includes Node.js, pnpm, and all required tools
+- **VS Code extensions**: Pre-installed extensions for Vue, Nuxt, TypeScript, ESLint, and more
+- **Volume mounts**: Node modules are cached in a Docker volume for faster rebuilds
+- **Port forwarding**: Ports 3000 (web) and 5173 (dev) are automatically forwarded
+
+### Development Workflow
+
+Once the container is running:
+
+```bash
+# Install dependencies (already done by post-create script)
+pnpm install
+
+# Start development servers
+pnpm --filter api dev & pnpm --filter web dev
+```
+
+The development environment will be available at:
+
+- Frontend: <http://localhost:3000>
+- API: <http://localhost:8080>
 
 ## 🔒 Security Features
 
