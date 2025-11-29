@@ -25,6 +25,7 @@ WORKDIR /app
 
 # Copy built static files to Nginx's html directory
 COPY --from=build /app/.output/public /usr/share/nginx/html
+COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
