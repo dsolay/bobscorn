@@ -1,4 +1,4 @@
-FROM node:24-bookworm
+FROM debian:12-slim
 
 LABEL maintainer="Roman Gonzalez <roman.gonzalez.ea@gmail.com>"
 
@@ -9,6 +9,7 @@ RUN set -eux; \
   apt-get update; \
   apt-get install -y --no-install-recommends \
   sudo \
+  curl \
   git \
   inetutils-ping \
   inetutils-traceroute \
@@ -23,50 +24,50 @@ RUN set -eux; \
   tcpdump \
   strace \
   p7zip-full \
+  ca-certificates \
   build-essential \
   pkgconf \
   zip \
   unzip \
-  unrar-free \
   gnupg2 \
   openssh-client \
   vim && \
   rm -rf /var/lib/apt/lists/*
 
-ENV HOME /home/node
-ENV PATH $HOME/.anyenv/bin:$PATH
 
-RUN set -ex; \
-  git clone https://github.com/anyenv/anyenv "${HOME}"/.anyenv && \
-  "$HOME"/.anyenv/bin/anyenv install --force-init && \
-  anyenv install nodenv && \
-  eval "$(anyenv init -)" && \
-  git clone https://github.com/nodenv/node-build-update-defs.git \
-  "$(nodenv root)"/plugins/node-build-update-defs
+# Add a non-root user
+ARG USERNAME=app
+ARG PUID=1001
+ARG PGID=1001
+ENV PUID ${PUID}
+ENV PGID ${PGID}
+ENV HOME /home/${USERNAME}
 
-# hadolint ignore=DL3008
-RUN set -ex; \
-  apt-get update && \
-  apt-get install -y --no-install-recommends \
-  chrpath \
-  libssl-dev \
-  libxft-dev \
-  libfreetype6 \
-  libfreetype6-dev \
-  libfontconfig1 \
-  libfontconfig1-dev && \
-  apt-get autoremove -y && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
+RUN set -x ; \
+  addgroup --gid ${PGID} ${USERNAME} ; \
+  adduser \
+  --uid ${PUID} \
+  --disabled-password \
+  --gid ${PGID} \
+  --comment ${USERNAME} \
+  ${USERNAME}
 
-USER node
 WORKDIR $HOME/workspace/app
 
 RUN mkdir -p \
-  /home/node/.vscode-server/extensions \
-  /home/node/.vscode-server-insiders/extensions && \
-  chown -R node \
-  /home/node/.vscode-server \
-  /home/node/.vscode-server-insiders
+  /home/${USERNAME}/.vscode-server/extensions \
+  /home/${USERNAME}/.vscode-server-insiders/extensions && \
+  chown -R ${USERNAME} \
+  /home/${USERNAME}/.vscode-server \
+  /home/${USERNAME}/.vscode-server-insiders
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+ENV MISE_DATA_DIR=${HOME}/mise
+ENV MISE_CONFIG_DIR=${HOME}/mise
+ENV MISE_CACHE_DIR=${MISE_DATA_DIR}/cache
+ENV MISE_INSTALL_PATH="/usr/local/bin/mise"
+ENV PATH="${MISE_DATA_DIR}/shims:$PATH"
+
+RUN curl https://mise.run | sh
 
 CMD [ "sleep", "infinity"]
