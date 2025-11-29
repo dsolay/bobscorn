@@ -91,7 +91,7 @@ docker run -p 80:80 bobscorn-web
 
 ## 📁 Project Structure
 
-text```
+```text
 bobscorn/
 ├── apps/
 │   ├── api/                 # Backend API (Node.js + Express)
