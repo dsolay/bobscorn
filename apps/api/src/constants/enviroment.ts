@@ -13,14 +13,10 @@ try {
 const envSchema = z.object({
   APP_DEBUG: z.string().optional(),
   DEBUG_QUERIES: z.string().optional(),
-  DATABASE_URL: z.string(),
   JWT_ACCESS_SECRET: z.string(),
-  JWT_2FA_SECRET: z.string(),
   ORIGINS: z.string().optional(),
-  ADMIN_PASSWORD: z.string().optional(),
   DEPLOY_TARGET: z.enum(['uat', 'production']).default('uat'),
-  COOKIE_SAME_SITE: z.enum(['lax', 'strict', 'none']).default('strict'),
-  SMTP_URL: z.string(),
+  COOKIE_SAME_SITE: z.enum(['lax', 'strict', 'none']).default('lax'),
 })
 
 let instance: Environment | undefined
@@ -52,20 +48,12 @@ export class Environment {
     return new TextEncoder().encode(this.#parsed.JWT_ACCESS_SECRET)
   }
 
-  get jwt2FASecret() {
-    return new TextEncoder().encode(this.#parsed.JWT_2FA_SECRET)
-  }
-
   get isProduction() {
     return process.env.NODE_ENV === 'production'
   }
 
   get origin() {
     return this.#parsed.ORIGINS ?? '*'
-  }
-
-  get adminPassword() {
-    return this.#parsed.ADMIN_PASSWORD
   }
 
   get deployTarget() {
@@ -76,9 +64,7 @@ export class Environment {
     return this.#parsed.COOKIE_SAME_SITE
   }
 
-  get fromEmail() {
-    const url = new URL(this.#parsed.SMTP_URL)
-
-    return url.username
+  get excludeRouteFromRateLimit() {
+    return [/^\/users/, /^\/oauth/, /^\/corns\/history$/]
   }
 }

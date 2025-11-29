@@ -3,7 +3,10 @@ export {}
 declare global {
   namespace Express {
     export interface Request {
-      user: {
+      rateLimit: {
+        resetTime: Date
+      }
+      user?: {
         id: number
         refresToken?: strnig
       }

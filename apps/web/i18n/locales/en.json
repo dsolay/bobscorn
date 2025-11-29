@@ -1,0 +1,43 @@
+{
+  "title": "Bob's Corn Portal",
+  "footer": "© 2025 Bob’s Corn. All rights reserved.",
+  "portal": {
+    "title": "Client Portal",
+    "form": {
+      "actions": {
+        "submit": "Buy Corn",
+        "reset": "Reset"
+      }
+    },
+    "status": {
+      "bought": "Bought",
+      "nextAllowed": "Next allowed",
+      "history": "History"
+    },
+    "notifications": {
+      "success": "Purchase Successful!",
+      "quantity": "+{quantity} Corn",
+      "rateLimited": "Rate limited — wait {time}s",
+      "tooManyRequests": "Too many requests — try again in {time}s"
+    }
+  },
+  "login": {
+    "btn": "Login",
+    "title": "Login to Your Account",
+    "subtitle": "Access your corn purchasing dashboard",
+    "email": "Email Address",
+    "email_placeholder": "your{'@'}email.com",
+    "password": "Password",
+    "password_placeholder": "••••••••",
+    "remember": "Remember me",
+    "forgot": "Forgot password?",
+    "submit": "Sign In",
+    "loading": "Signing in...",
+    "no_account": "Don't have an account?",
+    "signup": "Sign up",
+    "success": "Login successful!"
+  },
+  "logout": {
+    "btn": "Logout"
+  }
+}

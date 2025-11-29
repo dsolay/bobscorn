@@ -1,0 +1,43 @@
+{
+  "title": "Portal de Maíz Bob",
+  "footer": "© 2025 Portal de Maíz Bob. Todos los derechos reservados.",
+  "portal": {
+    "title": "Portal del Cliente",
+    "form": {
+      "actions": {
+        "submit": "Comprar Maíz",
+        "reset": "Reiniciar"
+      }
+    },
+    "status": {
+      "bought": "Comprados",
+      "nextAllowed": "Próximo permitido",
+      "history": "Historial"
+    },
+    "notifications": {
+      "success": "¡Compra Exitosa!",
+      "quantity": "+{quantity} Corn",
+      "rateLimited": "Límite de tasa alcanzado — espera {time}s",
+      "tooManyRequests": "Demasiadas solicitudes — intenta de nuevo en {time}s"
+    }
+  },
+  "login": {
+    "btn": "Iniciar Sesión",
+    "title": "Inicia Sesión en Tu Cuenta",
+    "subtitle": "Accede a tu panel de compra de maíz",
+    "email": "Correo Electrónico",
+    "email_placeholder": "tu{'@'}email.com",
+    "password": "Contraseña",
+    "password_placeholder": "••••••••",
+    "remember": "Recordarme",
+    "forgot": "¿Olvidaste tu contraseña?",
+    "submit": "Iniciar Sesión",
+    "loading": "Iniciando sesión...",
+    "no_account": "¿No tienes una cuenta?",
+    "signup": "Regístrate",
+    "success": "¡Inicio de sesión exitoso!"
+  },
+  "logout": {
+    "btn": "Cerrar Sesión"
+  }
+}

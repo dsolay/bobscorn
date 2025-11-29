@@ -1,4 +1,4 @@
-import type { AnyObject } from '@/types/index.js'
+import type { AnyObject, Pagination } from '@/types/index.js'
 
 export type MicroserviceResponse<T = AnyObject> = {
   data: T
@@ -16,13 +16,6 @@ export interface FindParams {
 
 export interface SingleApiResponse<T = AnyObject> {
   data: T
-}
-
-export interface Pagination {
-  page: number
-  pageSize: number
-  total: number
-  pageCount: number
 }
 
 export interface PaginatedApiResponse<T = AnyObject> {

@@ -9,6 +9,7 @@ export const AuthType = {
   BEARER: 'bearer',
   API_KEY: 'apiKey',
   NONE: 'none',
+  OPTIONAL: 'optional',
 } as const
 
 export type AuthType = (typeof AuthType)[keyof typeof AuthType]

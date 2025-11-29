@@ -41,6 +41,7 @@ model User {
   updatedAt     DateTime?      @updatedAt @map("actualizado")
   deletedAt     DateTime?      @map("eliminado")
   refreshTokens RefreshToken[]
+  buyHistories  BuyHistory[]
 
   @@map("usuarios")
 }
@@ -56,4 +57,17 @@ model RefreshToken {
   deletedAt DateTime? @map("eliminado")
 
   @@map("refresh_tokens")
+}
+
+model BuyHistory {
+  id        Int       @id @default(autoincrement())
+  quantity  Int
+  total     Int
+  userId    Int       @map("usuario_id")
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt DateTime  @default(now()) @map("creado")
+  updatedAt DateTime? @updatedAt @map("actualizado")
+  deletedAt DateTime? @map("eliminado")
+
+  @@map("historial_compra")
 }

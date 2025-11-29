@@ -7,7 +7,8 @@ function buildMiddlewares(route: Routes): RequestHandler[] {
 
   const auth = route.auth ?? AuthType.BEARER
 
-  middlewares.push(mapAuthMiddlewares[auth])
+  const authMiddleware = mapAuthMiddlewares[auth]
+  if (authMiddleware) middlewares.push(authMiddleware)
 
   if (route.middlewares) middlewares.push(...route.middlewares)
 

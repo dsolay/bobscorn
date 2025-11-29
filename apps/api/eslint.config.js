@@ -58,6 +58,7 @@ export default defineConfig(
       pluginImportConfigs.recommended,
       pluginImportConfigs.typescript,
       comments.recommended,
+      // eslint-disable-next-line import-x/no-named-as-default-member
       pluginSecurity.configs.recommended,
       sonarjs.recommended,
       stylistic.configs.recommended,
